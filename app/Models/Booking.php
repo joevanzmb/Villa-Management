@@ -14,4 +14,8 @@ class Booking extends Model
     public function villa() {
         return $this->belongsTo(Villa::class);
     }
+
+    public function payment() {
+        return $this->hasOne(Payment::class);
+    }
 }
