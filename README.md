@@ -1,6 +1,6 @@
 # 🏡 De Villa Sani Management System
 
-![De Villa Sani](public/images/cover.jpeg)
+![De Villa Sani](public/images/cover.png)
 
 A comprehensive booking and landing page system for **De Villa Sani**, a luxury premium villa located at the heart of Kota Wisata Batu (0 KM from Alun-Alun Batu).
 
