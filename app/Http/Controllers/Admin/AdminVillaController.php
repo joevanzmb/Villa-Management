@@ -9,29 +9,38 @@ use Inertia\Inertia;
 
 class AdminVillaController extends Controller
 {
-    public function index()
+    public function settings()
     {
-        $villas = Villa::withCount('bookings')->get();
-        return Inertia::render('Admin/Villas/Index', ['villas' => $villas]);
+        $villa = Villa::firstOrCreate(
+            ['id' => 1],
+            [
+                'name' => 'De Villa Sani',
+                'description' => 'Luxury mountain view villa in Batu.',
+                'price_per_night' => 2500000,
+                'weekday_price' => 400000,
+                'weekend_price' => 600000,
+                'extra_bed_price' => 100000,
+                'max_guests' => 10,
+                'bedrooms' => 4,
+                'bathrooms' => 3,
+            ]
+        );
+        return Inertia::render('Admin/Villas/Settings', ['villa' => $villa]);
     }
 
-    public function edit(Villa $villa)
-    {
-        return Inertia::render('Admin/Villas/Edit', ['villa' => $villa]);
-    }
-
-    public function update(Request $request, Villa $villa)
+    public function updateSettings(Request $request)
     {
         $request->validate([
             'name' => 'required|string',
             'description' => 'nullable|string',
-            'price_per_night' => 'required|numeric|min:0',
-            'max_guests' => 'required|integer|min:1',
-            'bedrooms' => 'required|integer|min:1',
-            'bathrooms' => 'required|integer|min:1',
+            'weekday_price' => 'required|numeric|min:0',
+            'weekend_price' => 'required|numeric|min:0',
+            'extra_bed_price' => 'required|numeric|min:0',
         ]);
 
-        $villa->update($request->all());
-        return back()->with('success', 'Data villa berhasil diperbarui.');
+        $villa = Villa::findOrFail(1);
+        $villa->update($request->only(['name', 'description', 'weekday_price', 'weekend_price', 'extra_bed_price']));
+        
+        return back()->with('success', 'Pengaturan harga berhasil diperbarui.');
     }
 }

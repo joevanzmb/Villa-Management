@@ -31,9 +31,8 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/pesanan/{booking}', [AdminBookingController::class, 'show'])->name('admin.bookings.show');
     Route::patch('/pesanan/{booking}/status', [AdminBookingController::class, 'updateStatus'])->name('admin.bookings.updateStatus');
 
-    Route::get('/villa', [AdminVillaController::class, 'index'])->name('admin.villas.index');
-    Route::get('/villa/{villa}/edit', [AdminVillaController::class, 'edit'])->name('admin.villas.edit');
-    Route::patch('/villa/{villa}', [AdminVillaController::class, 'update'])->name('admin.villas.update');
+    Route::get('/pengaturan-harga', [AdminVillaController::class, 'settings'])->name('admin.villas.settings');
+    Route::patch('/pengaturan-harga', [AdminVillaController::class, 'updateSettings'])->name('admin.villas.updateSettings');
 
     Route::get('/pelanggan', [AdminCustomerController::class, 'index'])->name('admin.customers.index');
 

@@ -47,7 +47,7 @@ class BookingController extends Controller
 
         $villa = Villa::findOrFail(1);
         
-        $priceData = $this->calculatePrice($request->check_in, $request->check_out, $request->guest_count);
+        $priceData = $this->calculatePrice($request->check_in, $request->check_out, $request->guest_count, $villa);
         $totalNights = $priceData['total_nights'];
         $grandTotal = $priceData['grand_total'];
         $pricePerNight = $priceData['avg_price_per_night'];
@@ -155,7 +155,8 @@ class BookingController extends Controller
             ]);
         }
 
-        $priceData = $this->calculatePrice($request->check_in, $request->check_out, $request->guests);
+        $villa = Villa::findOrFail(1);
+        $priceData = $this->calculatePrice($request->check_in, $request->check_out, $request->guests, $villa);
 
         return response()->json([
             'available' => true,
@@ -166,7 +167,7 @@ class BookingController extends Controller
         ]);
     }
 
-    private function calculatePrice($checkInDate, $checkOutDate, $guests)
+    private function calculatePrice($checkInDate, $checkOutDate, $guests, $villa)
     {
         $start = Carbon::parse($checkInDate);
         $end = Carbon::parse($checkOutDate);
@@ -180,12 +181,12 @@ class BookingController extends Controller
             // dayOfWeek: 0 = Sunday, 1 = Monday, ... 6 = Saturday
             $day = $current->dayOfWeek;
             
-            // Jumat (5), Sabtu (6), Minggu (0) -> Weekend (600rb), Sisanya -> Weekday (400rb)
-            $nightPrice = in_array($day, [0, 5, 6]) ? 600000 : 400000;
+            // Jumat (5), Sabtu (6), Minggu (0) -> Weekend Price, Sisanya -> Weekday Price
+            $nightPrice = in_array($day, [0, 5, 6]) ? $villa->weekend_price : $villa->weekday_price;
             
             // Extra bed fee jika 7-10 orang
             if ($guests === '7-10 Orang') {
-                $nightPrice += 100000;
+                $nightPrice += $villa->extra_bed_price;
             }
             
             $grandTotal += $nightPrice;
