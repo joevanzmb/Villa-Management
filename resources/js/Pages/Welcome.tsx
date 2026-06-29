@@ -706,9 +706,9 @@ export default function Welcome({ auth }: PageProps) {
                             </Reveal>
                             <div className="grid md:grid-cols-3 gap-8">
                                 {[
-                                    { name: "Budi Santoso", text: "Villa nya nyaman banget, bersih, dan lokasinya beneran strategis. Cocok buat bawa keluarga besar liburan ke Batu!", rate: 5 },
-                                    { name: "Siti Aminah", text: "Fasilitas lengkap, anak-anak betah sekali bernyanyi pakai fasilitas Karaoke dan Smart TV. Hawanya sejuk, bersih, dan bikin betah.", rate: 5 },
-                                    { name: "Andi Wijaya", text: "Pengalaman menginap yang luar biasa. Akses ke alun-alun gampang banget, tinggal jalan kaki. Recommended!", rate: 5 }
+                                    { name: "Alya Naura", text: "Villa nya nyaman banget, bersih, dan lokasinya beneran strategis. Cocok buat bawa keluarga besar liburan ke Batu!", rate: 5 },
+                                    { name: "Devira", text: "Fasilitas lengkap, anak-anak betah sekali bernyanyi pakai fasilitas Karaoke dan Smart TV. Hawanya sejuk, bersih, dan bikin betah.", rate: 5 },
+                                    { name: "Adrian", text: "Pengalaman menginap yang luar biasa. Akses ke alun-alun gampang banget, tinggal jalan kaki. Recommended!", rate: 5 }
                                 ].map((review, idx) => (
                                     <Reveal key={idx} delay={idx * 0.15}>
                                         <div className="bg-luxury-cream/40 p-8 rounded-[2rem] border border-luxury-sand/30 hover:bg-white hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
