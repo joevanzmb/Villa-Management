@@ -236,7 +236,16 @@ export default function Welcome({ auth }: PageProps) {
 
     return (
         <>
-            <Head title="Villa Murah 0KM Batu" />
+            <Head>
+                <title>De Villa Sani - Villa Keluarga Premium 0 KM Alun-Alun Batu</title>
+                <meta name="description" content="Sewa villa keluarga premium di jantung Kota Wisata Batu. Hanya berjalan kaki (0 KM) ke Alun-Alun Batu, fasilitas super lengkap, bersih, mewah, dan anti macet." />
+                <meta name="keywords" content="villa batu, sewa villa batu, villa dekat alun alun batu, villa keluarga batu, villa premium batu, penginapan batu, de villa sani, penginapan dekat jatim park" />
+                <meta property="og:title" content="De Villa Sani - Villa Premium 0 KM Alun-Alun Batu" />
+                <meta property="og:description" content="Sewa villa mewah di pusat Kota Batu. Akses jalan kaki ke Alun-Alun, bebas macet, fasilitas super lengkap untuk keluarga Anda!" />
+                <meta property="og:image" content="/images/cover.png" />
+                <meta property="og:type" content="website" />
+                <meta name="twitter:card" content="summary_large_image" />
+            </Head>
             <div className="min-h-screen bg-luxury-cream text-luxury-darkgreen overflow-x-hidden selection:bg-luxury-gold/40 selection:text-luxury-darkgreen">
 
                 <Navbar auth={auth} />
