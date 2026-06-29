@@ -32,7 +32,7 @@ export default function AdminLayout({ children, title }: PropsWithChildren<{ tit
                 {/* Logo */}
                 <div className="px-6 pt-8 pb-6">
                     <Link href="/" className="block">
-                        <img src="/images/sani-logo.svg" alt="De Villa Sani" className="h-10 w-auto" />
+                        <img src="/images/sani-logo.png" alt="De Villa Sani" className="h-10 w-auto" />
                     </Link>
                     <p className="text-[10px] uppercase tracking-[0.2em] text-white/40 mt-1">Panel Administrasi</p>
                 </div>
@@ -85,7 +85,7 @@ export default function AdminLayout({ children, title }: PropsWithChildren<{ tit
                     <aside className="relative w-64 bg-luxury-darkgreen text-white h-full flex flex-col">
                         <div className="px-6 pt-8 pb-6 flex justify-between items-start">
                             <div>
-                                <img src="/images/sani-logo.svg" alt="De Villa Sani" className="h-8 w-auto" />
+                                <img src="/images/sani-logo.png" alt="De Villa Sani" className="h-8 w-auto" />
                                 <p className="text-[10px] uppercase tracking-[0.2em] text-white/40 mt-1">Panel Administrasi</p>
                             </div>
                             <button onClick={() => setSidebarOpen(false)} className="text-white/40 hover:text-white">

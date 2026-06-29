@@ -102,7 +102,7 @@ export default function Book({ villa }: { villa: any }) {
             <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-700 bg-luxury-cream shadow-md py-3">
                 <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
                     <Link href="/" className="flex items-center">
-                        <img src="/images/sani-logo.svg" alt="De Villa Sani" className="h-12 md:h-16 w-auto transition-all duration-500" />
+                        <img src="/images/sani-logo.png" alt="De Villa Sani" className="h-12 md:h-16 w-auto transition-all duration-500" />
                     </Link>
                     <div className="flex items-center">
                         <Link

@@ -61,7 +61,7 @@ function Navbar({ auth }: NavbarProps) {
             } ${visible ? 'translate-y-0' : '-translate-y-full'}`}>
             <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
                 <Link href="/" className="flex items-center">
-                    <img src="/images/sani-logo.svg" alt="De Villa Sani" className="h-12 md:h-16 w-auto transition-all duration-500" />
+                    <img src="/images/sani-logo.png" alt="De Villa Sani" className="h-12 md:h-16 w-auto transition-all duration-500" />
                 </Link>
 
                 {/* Desktop menu */}
@@ -352,7 +352,7 @@ export default function Welcome({ auth }: PageProps) {
                         <Reveal delay={0.2}>
                             <div className="bg-white rounded-[2rem] p-8 md:p-12 flex flex-col md:flex-row items-center gap-10 shadow-xl border border-luxury-sand/50">
                                 <div className="flex-1 space-y-6 text-center md:text-left">
-                                    <img src="/images/sani-logo.svg" alt="De Villa Sani Logo" className="h-16 md:h-20 w-auto mx-auto md:mx-0 mb-2" />
+                                    <img src="/images/sani-logo.png" alt="De Villa Sani Logo" className="h-16 md:h-20 w-auto mx-auto md:mx-0 mb-2" />
                                     <p className="text-sm text-luxury-charcoal/60 leading-relaxed max-w-lg mx-auto md:mx-0 text-justify md:text-left">
                                         Terletak strategis di pusat Kota Wisata Batu (Jl. Panderman 9A). Nikmati kemudahan akses ke puluhan destinasi ikonik, alun-alun kota, hingga pusat kuliner legendaris hanya dengan berjalan kaki.
                                     </p>
@@ -607,7 +607,7 @@ export default function Welcome({ auth }: PageProps) {
                                     <div className="w-16 h-[2px] bg-luxury-gold mb-6" />
                                     <h2 className="font-serif text-4xl md:text-5xl font-bold flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
                                         <span className="text-luxury-darkgreen">Sudut Nyaman di</span>
-                                        <img src="/images/sani-logo.svg" alt="De Villa Sani Logo" className="h-20 md:h-32 w-auto" />
+                                        <img src="/images/sani-logo.png" alt="De Villa Sani Logo" className="h-20 md:h-32 w-auto" />
                                     </h2>
                                 </div>
                             </Reveal>
@@ -828,7 +828,7 @@ export default function Welcome({ auth }: PageProps) {
                     <div className="max-w-7xl mx-auto px-6 md:px-12">
                         <div className="grid md:grid-cols-3 gap-12 mb-12">
                             <div>
-                                <img src="/images/sani-logo.svg" alt="De Villa Sani" className="h-12 w-auto mb-6" />
+                                <img src="/images/sani-logo.png" alt="De Villa Sani" className="h-12 w-auto mb-6" />
                                 <h3 className="font-serif text-lg text-luxury-darkgreen mb-2 leading-tight">
                                     Vila 0 Km <br /> Pusat Kota Batu!
                                 </h3>
