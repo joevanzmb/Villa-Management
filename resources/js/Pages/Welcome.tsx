@@ -150,14 +150,14 @@ const GALLERY_IMAGES = [
 
 const FAQ_ITEMS = [
     { q: "Bagaimana lokasi De Villa Sani? Apakah benar dekat dengan Alun-Alun Batu?", a: "Ya, De Villa Sani berada di lokasi yang sangat strategis (0 KM Pusat Kota Batu). Anda hanya perlu berjalan kaki santai sekitar 3-5 menit saja untuk sampai ke Alun-Alun Kota Batu. Sangat praktis, bebas macet, dan tidak perlu pusing mencari tempat parkir." },
-    { q: "Berapa kapasitas maksimal tamu di De Villa Sani?", a: "Kapasitas ideal villa kami adalah untuk 6-8 orang (tersedia 3 kamar tidur luas). Namun, kami dapat menampung maksimal hingga 10 tamu rombongan keluarga dengan penambahan ekstra bed (biaya Rp 100.000/malam per bed)." },
+    { q: "Berapa kapasitas maksimal tamu di De Villa Sani?", a: "Kapasitas ideal villa kami adalah untuk 6-8 orang (tersedia 3 kamar tidur luas). Kami dapat menampung maksimal hingga 10 tamu rombongan keluarga dengan gratis 4 ekstra bed (tanpa tambahan biaya)." },
     { q: "Apakah ada fasilitas hiburan seperti Karaoke dan Smart TV?", a: "Tentu saja! Kami menyediakan fasilitas Smart TV layar lebar yang sudah terhubung dengan WiFi cepat gratis, lengkap dengan perangkat Karaoke berkualitas untuk menciptakan kehangatan dan keseruan bersama rombongan Anda di malam hari." },
     { q: "Apakah dapur bisa digunakan untuk memasak dan bagaimana dengan area parkirnya?", a: "Dapur kami sudah dilengkapi peralatan masak lengkap, kulkas, penanak nasi, kompor, water dispenser gratis galon, serta complimentary corner (teh, kopi, gula, indomie gratis). Untuk parkir, tersedia area carport privat dan aman di dalam gerbang yang muat hingga 2 mobil keluarga." },
     { q: "Jam berapa ketentuan Check-In dan Check-Out?", a: "Waktu Check-In dimulai dari pukul 14:00 WIB dan waktu Check-Out maksimal pukul 12:00 WIB. Jika Anda memerlukan check-in lebih awal atau check-out lebih lambat (early check-in/late check-out), silakan koordinasikan dengan kami terlebih dahulu (tergantung ketersediaan)." },
     { q: "Apakah diperbolehkan membawa hewan peliharaan (pets) atau merokok di dalam villa?", a: "Mohon maaf, demi menjaga kebersihan lingkungan villa dan kenyamanan tamu berikutnya, kami tidak mengizinkan adanya hewan peliharaan (pets). Merokok juga hanya diperbolehkan di area luar ruangan (teras/balkon), dan dilarang keras merokok di dalam kamar tidur." }
 ];
 
-export default function Welcome({ auth }: PageProps) {
+export default function Welcome({ auth, villa }: PageProps & { villa?: any }) {
     const heroRef = useRef<HTMLDivElement>(null);
 
     // Lightbox state
@@ -272,9 +272,20 @@ export default function Welcome({ auth }: PageProps) {
                             Vila <span className="text-luxury-gold drop-shadow-[0_0_20px_rgba(201,165,92,0.9)]">0 Km</span> <br />
                             <span className="italic font-bold">Pusat Kota Batu!</span>
                         </h1>
-                        <p className="text-luxury-wood text-xs sm:text-sm md:text-lg font-light max-w-4xl leading-relaxed mb-8 md:mb-12 animate-fade-in-up-delay-2 opacity-0 drop-shadow-[0_2px_10px_rgba(255,255,255,0.5)]">
+                        <p className="text-luxury-wood text-xs sm:text-sm md:text-lg font-light max-w-4xl leading-relaxed mb-6 animate-fade-in-up-delay-2 opacity-0 drop-shadow-[0_2px_10px_rgba(255,255,255,0.5)]">
                             Nikmati pengalaman menginap yang tenang di pusat Kota Batu. Hanya beberapa langkah menuju Alun-Alun Batu dengan kenyamanan vila eksklusif untuk keluarga dan sahabat.
                         </p>
+
+                        <div className="flex flex-wrap gap-3 md:gap-4 mb-8 md:mb-12 animate-fade-in-up-delay-2 opacity-0">
+                            <div className="bg-luxury-cream/90 backdrop-blur-sm px-5 py-2.5 rounded-full border border-luxury-gold/40 shadow-[0_4px_15px_rgba(201,165,92,0.15)] flex items-center gap-2">
+                                <span className="w-2 h-2 rounded-full bg-luxury-gold animate-pulse"></span>
+                                <span className="text-luxury-darkgreen font-semibold text-sm md:text-base">Weekday: Rp{villa?.weekday_price ? Number(villa.weekday_price).toLocaleString('id-ID') : '600.000'} <span className="text-xs font-normal text-luxury-wood/80">/malam</span></span>
+                            </div>
+                            <div className="bg-luxury-cream/90 backdrop-blur-sm px-5 py-2.5 rounded-full border border-luxury-gold/40 shadow-[0_4px_15px_rgba(201,165,92,0.15)] flex items-center gap-2">
+                                <span className="w-2 h-2 rounded-full bg-luxury-olive animate-pulse"></span>
+                                <span className="text-luxury-darkgreen font-semibold text-sm md:text-base">Weekend: Rp{villa?.weekend_price ? Number(villa.weekend_price).toLocaleString('id-ID') : '900.000'} <span className="text-xs font-normal text-luxury-wood/80">/malam</span></span>
+                            </div>
+                        </div>
 
                         {/* Booking Widget */}
                         <div className="animate-fade-in-up-delay-3 opacity-0 w-full mt-4 md:mt-16 relative z-50">
@@ -544,7 +555,8 @@ export default function Welcome({ auth }: PageProps) {
                                     icon: <BedDouble className="w-6 h-6 text-luxury-gold" strokeWidth={1.5} />,
                                     items: [
                                         "3 Kamar Tidur Luas untuk istirahat yang optimal.",
-                                        "3 Kamar Mandi Air Panas (Water Heater) untuk melawan dinginnya udara Batu.",
+                                        "3 Kamar Mandi.",
+                                        "Tersedia Water Heater untuk melawan dinginnya udara Batu.",
                                         "Balkon Santai Lantai 2, titik pas untuk menikmati udara segar pagi hari."
                                     ]
                                 },
@@ -940,6 +952,22 @@ export default function Welcome({ auth }: PageProps) {
                         </div>
                     </div>
                 )}
+
+                {/* Floating WhatsApp Button */}
+                <a
+                    href="https://wa.me/6281231150451?text=Halo%20De%20Villa%20Sani,%20saya%20ingin%20bertanya%20seputar%20reservasi."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[90] bg-[#25D366] text-white p-3 md:p-4 rounded-full shadow-2xl hover:scale-110 hover:shadow-[0_10px_20px_rgba(37,211,102,0.4)] transition-all duration-300 flex items-center justify-center group"
+                    aria-label="Hubungi kami via WhatsApp"
+                >
+                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12.031 2C6.49 2 2 6.494 2 12.039c0 1.764.453 3.486 1.314 5.006L2 22l5.127-1.325c1.472.825 3.155 1.258 4.904 1.258 5.541 0 10.031-4.494 10.031-10.04 0-5.544-4.49-10.038-10.031-10.038v.045zm.02 16.536c-1.464 0-2.9-.387-4.161-1.12l-.299-.175-3.09.805.823-2.981-.19-.3A8.324 8.324 0 013.722 12.04c0-4.604 3.75-8.354 8.354-8.354 4.604 0 8.353 3.75 8.353 8.353 0 4.604-3.75 8.355-8.353 8.355h-.025zm4.582-6.262c-.251-.125-1.488-.734-1.718-.818-.23-.083-.398-.125-.565.125-.168.25-.65.817-.796.982-.148.165-.294.185-.546.06-.252-.124-1.06-.39-2.02-1.246-.745-.662-1.248-1.482-1.394-1.733-.147-.25-.015-.386.11-.51.112-.113.25-.296.376-.445.125-.15.168-.25.251-.417.083-.166.04-.313-.02-.437-.063-.125-.566-1.365-.776-1.87-.203-.49-.408-.423-.565-.432-.147-.008-.316-.008-.484-.008-.168 0-.44.062-.67.312-.23.25-.879.858-.879 2.093 0 1.236.9 2.43 1.025 2.597.125.166 1.77 2.705 4.288 3.791.6.258 1.066.412 1.433.528.601.19 1.147.163 1.574.1.472-.07 1.488-.607 1.698-1.195.21-.588.21-1.092.148-1.195-.064-.105-.23-.167-.482-.292z"/>
+                    </svg>
+                    <div className="absolute right-[calc(100%+15px)] top-1/2 -translate-y-1/2 bg-white text-luxury-darkgreen text-xs md:text-sm font-semibold px-4 py-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap border border-luxury-sand/30">
+                        Punya pertanyaan? Chat kami!
+                    </div>
+                </a>
             </div>
         </>
     );

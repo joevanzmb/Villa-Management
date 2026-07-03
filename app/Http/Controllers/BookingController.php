@@ -182,12 +182,7 @@ class BookingController extends Controller
             $day = $current->dayOfWeek;
             
             // Jumat (5), Sabtu (6), Minggu (0) -> Weekend Price, Sisanya -> Weekday Price
-            $nightPrice = in_array($day, [0, 5, 6]) ? $villa->weekend_price : $villa->weekday_price;
-            
-            // Extra bed fee jika 7-10 orang
-            if ($guests === '7-10 Orang') {
-                $nightPrice += $villa->extra_bed_price;
-            }
+            $nightPrice = in_array($day, [0, 5, 6]) ? ($villa->weekend_price ?? 900000) : ($villa->weekday_price ?? 600000);
             
             $grandTotal += $nightPrice;
             $current->addDay();

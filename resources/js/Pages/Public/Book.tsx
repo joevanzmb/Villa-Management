@@ -57,12 +57,8 @@ export default function Book({ villa }: { villa: any }) {
 
                 while (current < outD) {
                     const day = current.getDay(); // 0 = Sunday, 1 = Monday, ... 6 = Saturday
-                    // Jumat(5), Sabtu(6), Minggu(0) = 600rb
-                    let nightPrice = (day === 5 || day === 6 || day === 0) ? 600000 : 400000;
-
-                    if (data.guest_count === '7-10 Orang') {
-                        nightPrice += 100000;
-                    }
+                    // Jumat(5), Sabtu(6), Minggu(0) = weekend
+                    let nightPrice = (day === 5 || day === 6 || day === 0) ? (Number(villa?.weekend_price) || 900000) : (Number(villa?.weekday_price) || 600000);
 
                     total += nightPrice;
                     current.setDate(current.getDate() + 1);
@@ -156,7 +152,7 @@ export default function Book({ villa }: { villa: any }) {
                                             </select>
                                             <div className="flex gap-2 mt-3 p-3 md:p-4 bg-luxury-olive/5 rounded-2xl border border-luxury-olive/10 text-[10px] md:text-xs text-luxury-charcoal">
                                                 <svg className="w-3.5 h-3.5 md:w-4 md:h-4 text-luxury-olive shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                                <p>Maksimal 6 tamu. Ada tambahan ekstra bed Rp 100.000/malam untuk opsi 7-10 Orang.</p>
+                                                <p>Kapasitas hingga 10 orang (sudah termasuk gratis 4 extra bed).</p>
                                             </div>
                                         </div>
                                     </div>
@@ -306,7 +302,7 @@ export default function Book({ villa }: { villa: any }) {
                                         <span className="text-[10px] uppercase tracking-[0.15em] text-luxury-muted block">Total Pembayaran</span>
                                     </div>
                                     <span className="font-serif text-2xl text-luxury-gold font-bold">
-                                        {grandTotal > 0 ? `Rp ${grandTotal.toLocaleString('id-ID')}` : '—'}
+                                        {grandTotal > 0 ? `Rp${grandTotal.toLocaleString('id-ID')}` : '—'}
                                     </span>
                                 </div>
                             </div>
